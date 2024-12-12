@@ -1,0 +1,84 @@
+.bookdetails-cnt{
+    width: 100%;
+    height: 100vh;
+}
+
+.bookdetails-main-cnt{
+    width: calc(100% - 330px);
+    padding-left: 160px;
+    padding-right: 170px;
+    margin-top: 100px;
+    display: flex;
+    
+}
+
+.bookdetails-left-cnt{
+    width: 40%;
+    height: 800px;
+    // border-right: 1px solid red;
+}
+.bookdetails-left-cnt img{
+    // width: 280px;
+    width: 61%;
+    height: 320px;
+    padding: 40px;
+    border: 1px solid black;
+}
+.bookdetails-left-button-cnt{
+    margin-top: 30px;
+    width: 77%;
+    // padding-left: 40px;
+    // padding-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.bookdetails-left-button-cnt button{
+    width: 45%;
+    height: 40px;
+    padding: 10px;
+}
+.addToBag{
+    background-color: #A03037;
+    color: white;
+    cursor: pointer;
+}
+.wishlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+    background-color: rgb(74, 74, 74);
+}
+.bookdetails-right-cnt{
+    width: 60%;
+    line-height: 15px;
+}
+
+.bookdetails-right-line-cnt{
+    width: 100%;
+    border: 2px solid #e1e1e1;
+}
+.bookdetails-right-about-cnt{
+    color: #707070;
+}
+.cart-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 45%;
+    cursor: pointer;
+}
+.cart-button button{
+    width: 30px;
+    border-radius: 50%;
+    height: 35px;
+    border: 1px solid #707070;
+}
+.cart-button span{
+    border: 1px solid #707070;
+    padding: 6px 25px;
+    font: bold;
+    font-size: 20px;
+}

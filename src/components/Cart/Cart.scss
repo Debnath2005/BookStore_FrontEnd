@@ -1,0 +1,176 @@
+.cart-cnt{
+    padding-left: 160px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mycart-cnt{
+    width: 774px;
+    min-height: 251px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.mycart-cartno-cnt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.mycart-cartno-cnt select{
+    width: 275px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+}
+.cart-details-cnt{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.cart-details-div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.cart-details-btn{
+    width: 151px;
+    height: 35px;
+    background: #3371B5 0% 0% no-repeat padding-box;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.cart-img-cnt{
+    width: 65px;
+height: 85px;
+}
+.cart-img-cnt img{
+    width: 100%;
+    height: 85px;
+}
+
+.cart-item-cnt{
+    display: flex;
+    margin-bottom: 20px;
+    gap: 40px;
+}
+#author{
+    color: #9D9D9D;
+}
+.cart-button-cnt{
+    display: flex;
+    gap: 20px;
+}
+.cart-button-cnt button{
+  border: none;
+  outline: none;
+  background-color: white;
+  font-weight: 400;
+  font-size: medium;
+  cursor: pointer;
+}
+.cart-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 45%;
+    cursor: pointer;
+}
+.cart-button button{
+    width: 30px;
+    border-radius: 40%;
+    height: 35px;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+}
+.cart-button span{
+    border: 1px solid #707070;
+    padding: 3px 15px;
+    font: bold;
+    font-size: 20px;
+}
+
+// ----------------------Address------------------------
+
+.address-cnt{
+    width: 774px;
+    padding: 10px 20px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    margin-bottom: 20px;
+}
+.address-false-cnt{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font: 400;
+    font-size: medium;
+}
+.address-true-cnt{
+    height: 486px;
+}
+
+.address-details{
+
+}
+.address-name-cnt{
+    display: flex;
+    gap: 10px;
+}
+.address-input-div-cnt{
+    width: 251px;
+    height: 45px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+.address-fulladdress-input-cnt{
+    width: 512px;
+    height: 82px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 2px;
+    
+    padding:5px 15px;
+    margin-bottom: 25px;
+}
+
+.address-type-cnt{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.address-radio-cnt{
+    display: flex;
+    margin-bottom: 25px;
+}
+.address-radio-btn{
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+}
+
+// ------------------------order summary----------------
+
+.order-cnt{
+    width: 774px;
+    padding: 10px 20px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    margin-bottom: 20px;
+}
+.order-true-cnt{
+    height: 252px;
+    display: flex;
+    flex-direction: column;
+}

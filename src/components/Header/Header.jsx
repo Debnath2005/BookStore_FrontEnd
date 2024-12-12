@@ -1,6 +1,5 @@
 import React from 'react'
-import './Header.css'
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import './Header.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
