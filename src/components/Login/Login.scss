@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .login-img-cnt img{
     width: 350px;
@@ -29,6 +30,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+.name-cnt h3{
     cursor: pointer;
 }
 .login-cnt input{
@@ -119,6 +122,6 @@
     letter-spacing: 0px;
     cursor: pointer;
 }
-.active{
+.active-login{
     border-bottom: 4px solid #A03037;
 }

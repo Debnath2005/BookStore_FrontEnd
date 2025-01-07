@@ -7,10 +7,11 @@ import './Dashboard.scss'
 const Dashboard = () => {
   return (
     <div className='dashboard-cnt'>
-        {/* <span>dsfkmdfsdgfngfnklgfnklgfnklgfnklgfnkldgf</span> */}
-        <Header/>
-          <Outlet/>
-        <Footer/>
+      <div style={{position:"sticky",top:"0px",zIndex:"1"}}>
+       <Header/>
+      </div>  
+           <Outlet/>
+       <Footer/>
     </div>
   )
 }

@@ -1,21 +1,36 @@
 import React from 'react'
 import './BookCard.scss'
-import image from '../../Assest/Image.png'
-import StarPurple500OutlinedIcon from '@mui/icons-material/StarPurple500Outlined';
-const BookCard = () => {
+
+import { useNavigate } from 'react-router-dom';
+import {bookImg} from '../../Utils/bookImg'
+
+const BookCard = ({bookItem}) => {
+  //console.log(bookItem);
+  const navigate=useNavigate()
+  const handleBook=(bookId)=>{
+    navigate(`/bookDetails/${bookId}`)
+  }
+  const randomIndex= ()=>{
+    return Math.floor(Math.random() * 18);
+  }
+  
   return (
-    <div className='bookcard-cnt'>
+    <div className='bookcard-cnt' onClick={()=>{handleBook(bookItem._id)}}>
         <div className='baokcard-img-cnt'>
-            <img src={image} alt="book" />
+            <img src={bookImg[randomIndex()]} alt="book" />
         </div>
         <div className='bookcard-name-details'>
-            <h4>Don't Make Me Think</h4>
-            <span>by Steve Krug</span>
+            <h4>{bookItem.bookName}</h4>
+            <span>{bookItem.author}</span>
             <div className='bookstore-star-cnt'>
-                <h4>4.5<StarPurple500OutlinedIcon/> </h4>
-                <span>(20)</span>
+                <h4>4.5 &#9733;</h4>
+                <span>({bookItem.quantity})</span>
             </div>
-            <h4 id='price'>RS 1500</h4>
+            <div style={{display:'flex',gap:'15px'}}>
+              <h4 id='price'>RS {bookItem.discountPrice}</h4>
+              <s style={{color:'#878787'}}><h4 id='price' style={{color:'#878787'}}>RS {bookItem.price}</h4></s>
+            </div>
+            
         </div>
     </div>
   )

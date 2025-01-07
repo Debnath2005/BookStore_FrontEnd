@@ -1,0 +1,53 @@
+.myOrder-cnt{
+    width: calc(100% - 320px);
+    padding-left: 160px;
+    padding-right: 170px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    min-height: calc(100vh - 222px);
+}
+
+.myOrder-all-items-cnt{
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 40px);
+    padding: 25px 20px;
+    border: 1px solid #E4E4E4;
+}
+
+.myOrder-item-cnt{
+    display: flex;
+    gap: 40px;
+}
+.myOrder-img-cnt{
+    width: 65px;
+height: 85px;
+}
+.myOrder-img-cnt img{
+    width: 100%;
+    height: 85px;
+}
+#author{
+    color: #9D9D9D;
+}
+
+.myOrder-delevery-cnt{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.green-cnt{
+    width: 7px;
+    height: 7px;
+    background: #26A541 0% 0% no-repeat padding-box;
+    border-radius: 50%;
+}
+.place-order{
+    width: 162px;
+    height: 20px;
+    /* UI Properties */
+    text-align: left;
+    font: normal normal bold 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+}

@@ -1,13 +1,14 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import BookCard from './components/BookCard/BookCard'
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import BookDetails from './components/BookDetails/BookDetails';
 import Login from './components/Login/Login';
 import BookContainer from './components/BookContainer/BookContainer';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
+import Wishlist from './components/Wishlist/Wishlist';
+import MyOrder from './components/MyOrder/MyOrder';
+import MyProfile from './components/MyProfile/MyProfile';
+import OrderSummary from './components/OrderSummary/OrderSummary';
 
 
 const RouteModule = () => {
@@ -16,16 +17,13 @@ const RouteModule = () => {
         path: "login",
         element: <Login/>,
        },
-      //  {
-      //   path: "/cart",
-      //   element: <Cart/>,
-      //  },
        {
          path:"",
          element:<Dashboard/>,
          children:[
           {
-            path:'bookContainer',
+            path:'',
+            //'home/:pageNo/:sortBy',
             element:<BookContainer/>
           },
           {
@@ -35,35 +33,29 @@ const RouteModule = () => {
           {
             path:'Cart',
             element:<Cart/>
+          },
+          {
+            path:'wishlist',
+            element:<Wishlist/>
+          },
+          {
+            path:'myOrder',
+            element:<MyOrder/>
+          },
+          {
+            path:'myProfile',
+            element:<MyProfile/>
+          },{
+            path:'orderSummary',
+            element:<OrderSummary/>
           }
          ]
        }
 ])
   return (
-    
       <div className='routeModule'>
-       {/* <Header/> 
-       <div style={{display:'flex', flexWrap:'wrap',gap:'20px',paddingLeft:'160px',marginTop:'20px',marginBottom:'20px'}}>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       <BookCard/>
-       </div>
-       <Footer/>  
-      
-      <BookDetails/>
-      <Login/> */}
-      {/* <Login/> */}
-    <RouterProvider router={AppRoute}/>
-
-     </div>
+        <RouterProvider router={AppRoute}/>
+      </div>
   )
 }
 

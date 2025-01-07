@@ -1,12 +1,13 @@
 .cart-cnt{
     padding-left: 160px;
-    width: 100%;
+    width: calc(100% - 160px);
     margin-top: 20px;
     margin-bottom: 20px;
+    min-height: calc(100vh - 175px);
 }
 .mycart-cnt{
     width: 774px;
-    min-height: 251px;
+    min-height: 70px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 1px;
@@ -30,6 +31,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+   
 }
 .cart-details-div{
     width: 100%;
@@ -64,12 +66,13 @@ height: 85px;
 }
 .cart-button-cnt{
     display: flex;
-    gap: 20px;
+    gap: 42px;
 }
 .cart-button-cnt button{
   border: none;
   outline: none;
   background-color: white;
+  color: #A03037;
   font-weight: 400;
   font-size: medium;
   cursor: pointer;
@@ -82,9 +85,9 @@ height: 85px;
     cursor: pointer;
 }
 .cart-button button{
-    width: 30px;
-    border-radius: 40%;
-    height: 35px;
+    width: 24px;
+    border-radius: 50px;
+    height: 24px;
     background: #FAFAFA 0% 0% no-repeat padding-box;
     border: 1px solid #DBDBDB;
 }
@@ -116,9 +119,9 @@ height: 85px;
     height: 486px;
 }
 
-.address-details{
+// .address-details{
 
-}
+// }
 .address-name-cnt{
     display: flex;
     gap: 10px;
@@ -170,7 +173,66 @@ height: 85px;
     margin-bottom: 20px;
 }
 .order-true-cnt{
-    height: 252px;
+    min-height: 252px;
     display: flex;
     flex-direction: column;
+}
+
+
+
+// --------------------------------------
+.price-details {
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.price-details h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.price-details .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.price-details .row span {
+    font-size: 16px;
+    color: #555;
+}
+
+.price-details .row .price {
+    font-weight: bold;
+}
+
+.price-details .discount {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.price-details .delivery {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.price-details .total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.price-details .savings {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #28a745;
 }

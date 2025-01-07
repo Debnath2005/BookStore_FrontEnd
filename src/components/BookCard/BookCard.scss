@@ -1,11 +1,18 @@
 .bookcard-cnt{
     width: 235px;
-    height: 300px;
+    min-height: 300px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E2E2E2;
     border-radius: 3px;
     opacity: 1;
+    padding-bottom: 15px;
+    cursor: pointer;
     
+}
+.bookcard-cnt:hover{
+    // box-shadow: 0cap 0.2cap 1.3cap;
+    box-shadow: 1px 1px 10px 1px gray;
+    transform:translateY(5px)
 }
 .baokcard-img-cnt{
     display: flex;
@@ -14,8 +21,12 @@
     height: 172px;
     background: #F5F5F5 0% 0% no-repeat padding-box;
 }
+.baokcard-img-cnt img{
+    width: 105px;
+    height: 135px;
+}
 .bookcard-name-details{
-    height: 102px;
+    min-height: 102px;
     line-height: 0px;
     display: flex;
     flex-direction: column;
@@ -33,7 +44,7 @@
     justify-content: center;
     color: white;
     text-align: center;
-    line-height: 0px;
+    height: 18px;
     background: #388E3C 0% 0% no-repeat padding-box;
     border-radius: 1px;
     padding: 4px;
