@@ -20,7 +20,9 @@ const MyOrder = () => {
   return (
     <div className='myOrder-cnt'>
         <div style={{marginBottom:"20px",color:'#9D9D9D', cursor:"pointer"}}><span onClick={()=>navigate("/")}>Home</span> / <span style={{color:"black"}}>My Order</span></div>
-       {
+        {
+        orderList.length !==0 ?
+       
          orderList.map((order)=>{
             return <div className='myOrder-all-items-cnt'>
                 <div className='myOrder-item-cnt'>
@@ -40,8 +42,10 @@ const MyOrder = () => {
                 </div>
             </div>
          })
-       } 
-        
+       
+       :
+       <h1 >NO ORDER FOUND</h1>
+    }
              
             {/* <div className='myOrder-all-items-cnt'>
                 <div className='myOrder-item-cnt'>

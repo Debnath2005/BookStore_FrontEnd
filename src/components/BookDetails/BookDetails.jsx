@@ -10,7 +10,7 @@ import { addBookToWishList } from '../../Utils/store/wishlistbooksSlice';
 import { useEffect } from 'react';
 
 const BookDetails = () => {
-    const [isCard,setISCard]=useState(false)
+    //const [isCard,setISCard]=useState(false)
     
     const [isFav,setIsFav]=useState(false)
     
@@ -156,7 +156,7 @@ const BookDetails = () => {
     // }
   return (
     <div className='bookdetails-cnt'>
-        <div style={{marginBottom:"20px",color:'#9D9D9D', cursor:"pointer",paddingLeft:"160px",marginTop:'20px'}}><span onClick={()=>navigate("/")}>Home</span> / <span style={{color:"black"}}>Book Details</span></div>
+        <div style={{marginBottom:"20px",color:'#9D9D9D', cursor:"pointer",paddingLeft:"160px",marginTop:'20px'}}><span onClick={()=>navigate(-1)}>Home</span> / <span style={{color:"black"}}>Book Details</span></div>
         <div className='bookdetails-main-cnt'>
             <div className='bookdetails-left-cnt'>
                 <img src={bookImg[useMemo(()=>randomIndex(),[])]} alt="bookImg" />

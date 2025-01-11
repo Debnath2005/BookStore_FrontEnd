@@ -104,3 +104,13 @@ export const orderAPI= async(END_POINT,payload)=>{
   )
 }
 
+// Address 
+export const AddressAPI=async(END_POINT,payload)=>{
+  return await axios.put(`${BASE_URL}${END_POINT}`,payload,
+    { 
+      headers:{
+        "x-access-token":getAuth()
+      }
+    }
+  )
+}

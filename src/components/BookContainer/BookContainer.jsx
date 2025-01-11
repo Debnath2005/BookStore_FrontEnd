@@ -3,22 +3,30 @@ import BookCard from '../BookCard/BookCard'
 import './BookContainer.scss'
 import Loader from '../Loader/Loader'
 import { useSelector } from 'react-redux'
-import { Pagination, Stack } from '@mui/material'
+import { Pagination } from '@mui/material'
 import { getAllBooks } from '../../Utils/Api'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const BookContainer = () => {
 const [books,setBooks]=useState([])
 const [currentPage, setCurrentPage] = useState(1);
+const navigate=useNavigate()
  const allBook = useSelector((store) => store.books.booksList);
  if (allBook.length > 0) {
   console.log(allBook);
 }
  const quary=useSelector((store)=>store.querySearch.querySearchString || '')
-
+  const {pageNo}=useParams()
  const handleChange=(e,page)=>{
     setCurrentPage(page)
+    navigate(`/books/${page}`)
  }
+ useEffect(()=>{
+  const pageNum=Number(pageNo)
+   setCurrentPage(pageNum)
+   console.log(pageNum);
+ },[])
 
  const sortBook=(value)=>{
    const target=value.target.value;
@@ -82,15 +90,22 @@ const [currentPage, setCurrentPage] = useState(1);
             <Loader key={index} />
           ))
           :
-          paginateBooks().map((book,index)=>{
-            return  <BookCard key={index} bookItem={book}/>
-          })
+          
+          //  books.length !==0 ?
+            paginateBooks().map((book,index)=>{
+              return  <BookCard key={index} bookItem={book}/>
+            })
+            // :
+            // <h1 style={{display:'flex',alignItems:'center',justifyContent:'center'}}>No Books Found</h1>
+            
         }
       </div>
 
-        <div className='pagination-cnt'>
-           <Pagination count={Math.ceil(books.length / 10)} color="primary" onChange={handleChange}/> 
-        </div>
+        {
+          books.length !==0 && <div className='pagination-cnt'>
+              <Pagination count={Math.ceil(books.length / 10)} color="primary" page={currentPage} onChange={handleChange}/> 
+          </div>
+        }
 
     </div>
     

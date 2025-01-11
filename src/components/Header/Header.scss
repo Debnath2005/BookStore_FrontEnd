@@ -123,3 +123,16 @@ padding-right: 8%;
     width: 175px;
     padding-left: 25px;
 }
+
+
+/* Small screens (e.g., portrait smartphones) */
+@media (max-width: 480px) {
+    .bookStore-txt{
+        display: none;
+    }
+}
+  @media (max-width: 767px) {
+    .bookStore-txt{
+        display: none;
+    }
+}

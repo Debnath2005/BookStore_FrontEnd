@@ -21,7 +21,7 @@
     margin-bottom: 15px;
 }
 .mycart-cartno-cnt select{
-    width: 275px;
+    width: 200px;
     height: 40px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
@@ -99,9 +99,23 @@ height: 85px;
 }
 
 // ----------------------Address------------------------
-
+.address-customer-cnt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.address-customer-cnt button{
+    width: 150px;
+    height: 35px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #A03037;
+    color: #A03037;
+    border-radius: 2px;
+    cursor: pointer;
+}
 .address-cnt{
     width: 774px;
+    // min-height: 520px;
     padding: 10px 20px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
@@ -115,9 +129,9 @@ height: 85px;
     font: 400;
     font-size: medium;
 }
-.address-true-cnt{
-    height: 486px;
-}
+// .address-true-cnt{
+//      height: 486px;
+// }
 
 // .address-details{
 
@@ -161,7 +175,21 @@ height: 85px;
     align-items: center;
     padding-right: 15px;
 }
-
+.cart-save-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+.cart-save-btn button{
+    width: 123px;
+    height: 34px;
+    background: #3371B5 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    outline: none;
+}
 // ------------------------order summary----------------
 
 .order-cnt{
@@ -181,6 +209,12 @@ height: 85px;
 
 
 // --------------------------------------
+.cart-price-cnt{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
 .price-details {
     width: 300px;
     padding: 20px;

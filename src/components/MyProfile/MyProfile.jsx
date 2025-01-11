@@ -83,90 +83,96 @@ const MyProfile = () => {
                         <h3>Personal Details</h3>
                         <button>Add New Address</button>
                     </div>
+                 {
+                    userAddress.address.map((address,index)=>{
+                        return <div className='address-all-items-cnt'>
+                        {
+                            editAddressDetail === false ? 
+                           <div className='address-false1-cnt'>
+                             <div className='profile-details-header'>
+                                <h3>{index+1}. {address.addressType}</h3>
+                                <button className='profile-edit-btn' onClick={handleEditAddress}>Edit</button>
+                            </div>
+                            <div className='profile-label-cnt'>
+                                <div>Address</div>
+                                <div className='address-input-cnt'>{address.fullAddress}</div>
+                            </div>
+                            <div className='address-city-town-cnt'>
+                                <div className='address-city-label-cnt'>
+                                    <div>{address.city}</div>
+                                    <div className='address-city-input-cnt'>Bangaluru</div>
+                                </div>
+                                <div className='address-city-label-cnt'>
+                                    <div>{address.state}</div>
+                                    <div className='address-city-input-cnt'>Karnataka</div>
+                                </div>
+                            </div>
+                            <div className='address-type-cnt'>
+                                <div>Type</div>
+                                <div className='address-radio-cnt'>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" value={"Home"} />
+                                        <div>Home</div>
+                                    </div>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" value={address.addressType}/>
+                                        <div>Work</div>
+                                    </div>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" value={address.addressType}/>
+                                        <div>Other</div>
+                                    </div>
+                                </div>
+                            </div>
+                           </div>
+                           :
+                           <div className='address-false1-cnt'>
+                            <div className='profile-details1-header'>
+                                <div className='profile-details-header'>
+                                    <h3>1. Work</h3>
+                                    <button className='profile-edit-btn' onClick={handleEditAddress}>Cancle</button>
+                                </div>
+                                <button onClick={handleEditAddress} className='save-btn'>Save</button>
+                            </div>
+                             
+                            <div className='profile-label-cnt'>
+                                <div>Address</div>
+                                <input className='address-input-cnt' type='text' value={"BridgeLabz Solutions LLP, No. 42, 14th Main, 15th Cross, Sector 4, Opp to BDA complex, near Kumarakom restaurant, HSR Layout, Bangalore"} />
+                            </div>
+                            <div className='address-city-town-cnt'>
+                                <div className='address-city-label-cnt'>
+                                    <div>City/Town</div>
+                                    <input type='text' className='address-city-input-cnt' value={"Bangaluru"}/>
+                                </div>
+                                <div className='address-city-label-cnt'>
+                                    <div>State</div>
+                                    <input className='address-city-input-cnt' value={"Karnataka"}/>
+                                </div>
+                            </div>
+                            <div className='address-type-cnt'>
+                                <div>Type</div>
+                                <div className='address-radio-cnt'>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" />
+                                        <div>Home</div>
+                                    </div>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" />
+                                        <div>Work</div>
+                                    </div>
+                                    <div className='address-radio-btn'>
+                                        <input type="radio" name="type" id="" />
+                                        <div>Other</div>
+                                    </div>
+                                </div>
+                            </div>
+                           </div>
+                           
+                        }
+                        </div>
+                    })
+                 }
                     
-                    
-                    {
-                        editAddressDetail === false ?
-                       <div className='address-false1-cnt'>
-                         <div className='profile-details-header'>
-                            <h3>1. Work</h3>
-                            <button className='profile-edit-btn' onClick={handleEditAddress}>Edit</button>
-                        </div>
-                        <div className='profile-label-cnt'>
-                            <div>Address</div>
-                            <div className='address-input-cnt'>BridgeLabz Solutions LLP, No. 42, 14th Main, 15th Cross, Sector 4, Opp to BDA complex, near Kumarakom restaurant, HSR Layout, Bangalore</div>
-                        </div>
-                        <div className='address-city-town-cnt'>
-                            <div className='address-city-label-cnt'>
-                                <div>City/Town</div>
-                                <div className='address-city-input-cnt'>Bangaluru</div>
-                            </div>
-                            <div className='address-city-label-cnt'>
-                                <div>State</div>
-                                <div className='address-city-input-cnt'>Karnataka</div>
-                            </div>
-                        </div>
-                        <div className='address-type-cnt'>
-                            <div>Type</div>
-                            <div className='address-radio-cnt'>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" name="type" id="" />
-                                    <div>Home</div>
-                                </div>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" checked name="type" id="" />
-                                    <div>Work</div>
-                                </div>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" name="type" id="" />
-                                    <div>Other</div>
-                                </div>
-                            </div>
-                        </div>
-                       </div>
-                       :
-                       <div className='address-false1-cnt'>
-                        <div className='profile-details1-header'>
-                            <div className='profile-details-header'>
-                                <h3>1. Work</h3>
-                                <button className='profile-edit-btn' onClick={handleEditAddress}>Cancle</button>
-                            </div>
-                            <button onClick={handleEditAddress} className='save-btn'>Save</button>
-                        </div>
-                         
-                        <div className='profile-label-cnt'>
-                            <div>Address</div>
-                            <input className='address-input-cnt' type='text' value={"BridgeLabz Solutions LLP, No. 42, 14th Main, 15th Cross, Sector 4, Opp to BDA complex, near Kumarakom restaurant, HSR Layout, Bangalore"} />
-                        </div>
-                        <div className='address-city-town-cnt'>
-                            <div className='address-city-label-cnt'>
-                                <div>City/Town</div>
-                                <input type='text' className='address-city-input-cnt' value={"Bangaluru"}/>
-                            </div>
-                            <div className='address-city-label-cnt'>
-                                <div>State</div>
-                                <input className='address-city-input-cnt' value={"Karnataka"}/>
-                            </div>
-                        </div>
-                        <div className='address-type-cnt'>
-                            <div>Type</div>
-                            <div className='address-radio-cnt'>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" name="type" id="" />
-                                    <div>Home</div>
-                                </div>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" name="type" id="" />
-                                    <div>Work</div>
-                                </div>
-                                <div className='address-radio-btn'>
-                                    <input type="radio" name="type" id="" />
-                                    <div>Other</div>
-                                </div>
-                            </div>
-                        </div>
-                       </div>
-                    }
                 </div>
             </div>
         </div>

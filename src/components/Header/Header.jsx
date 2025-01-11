@@ -18,7 +18,7 @@ import { assignBookIntoList } from '../../Utils/store/bookSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from '../Login/Login';
 // import bookStore from '../../Utils/store/bookStore';
-import reducer, { assignAddressList, assignCartIntoList, assignUserDetails } from '../../Utils/store/cartSlice';
+import { assignAddressList, assignCartIntoList, assignUserDetails } from '../../Utils/store/cartSlice';
 import { assingBooksIntoWishList } from '../../Utils/store/wishlistbooksSlice';
 import { assingWordsIntoQuerySearch } from '../../Utils/store/quarySearchSlice';
 const Header = () => {
@@ -114,7 +114,7 @@ const Header = () => {
             <div className='header-main-item1-cnt'>
                 <div className='header-main-logo-cnt' onClick={()=>navigate('')}>
                   <img src={logo} alt="logo" />
-                  <span>Bookstore</span> 
+                  <span className='bookStore-txt'>Bookstore</span> 
                 </div>
                 <div className='header-main-search-cnt'>
                     <SearchIcon/>

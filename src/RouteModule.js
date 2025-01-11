@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import BookDetails from './components/BookDetails/BookDetails';
 import Login from './components/Login/Login';
 import BookContainer from './components/BookContainer/BookContainer';
@@ -13,16 +13,22 @@ import OrderSummary from './components/OrderSummary/OrderSummary';
 
 const RouteModule = () => {
   const AppRoute = createBrowserRouter([
-       {
-        path: "login",
-        element: <Login/>,
-       },
+      //  {
+      //   path: "login",
+      //   element: <Login/>,
+      //  },
        {
          path:"",
          element:<Dashboard/>,
+         
          children:[
           {
-            path:'',
+            index: true,
+            element: <Navigate to="books/1" replace />,
+          },
+          {
+           
+            path:'books/:pageNo',
             //'home/:pageNo/:sortBy',
             element:<BookContainer/>
           },

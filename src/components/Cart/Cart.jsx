@@ -1,25 +1,32 @@
-import React,{useMemo, useState} from 'react'
+import React,{ useState} from 'react'
 import './Cart.scss'
-import PinDropIcon from '@mui/icons-material/PinDrop';
-import cartImg from '../../Assest/Image.png'
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '@mui/material';
 import Login from '../Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookImg } from '../../Utils/bookImg';
-import { getCartItemRemoveApi, orderAPI, UpdateCartItemApi } from '../../Utils/Api';
+import { AddressAPI, getCartItemRemoveApi, orderAPI, UpdateCartItemApi } from '../../Utils/Api';
 import {assignCartIntoList, assignOrderList, removeBookFromCartList} from '../../Utils/store/cartSlice'
+
 const Cart = () => {
 
-    const [cardItem,setCardItem]=useState(1)
+    // const [cardItem,setCardItem]=useState(1)
     const [showAddress,setShowAddress]=useState(false)
     const [showOrder,setShowOrder]=useState(false)
     const [openModel,setOpenModel]=useState(false)
     const [showOrderPlaceBtn,setShowOrderplaceBtn]=useState(true)
     const [showContinueBtn,setShowContinueBtn]=useState(true)
+    const [addNewAddress,setAddNewAddress]=useState(false)
+    // 
+    const [addressNew,setAddressNew]=useState('')
+    const [city,SetCity]=useState('')
+    const [state,setState]=useState('')
+    const [addressType,setAddresstype]=useState('')
+    const [checked,setChecked]=useState('')
     const navigate=useNavigate()
     const dispatch=useDispatch()
     const cartData=useSelector((store) => store.cart.cartList);
+    const userAddress=useSelector((state)=>state.cart.addressDetails)
     
     console.log(cartData);
     
@@ -193,6 +200,25 @@ const Cart = () => {
         })
         return totalPrice
     }
+    const handleAddressApi=()=>{
+        if(localStorage.getItem('bookStore-token')){
+            setAddNewAddress(!addNewAddress)
+            if(addressType && addressNew && city && state){
+                AddressAPI(`bookstore_user/edit_user`,{"addressType":addressType,"fullAddress":addressNew,"city":city,"state":state})
+                .then((result)=>{
+                    const {data}=result
+                    console.log(data);
+                    setAddressNew('')
+                    setAddresstype('')
+                    SetCity('')
+                    setState('')
+                })
+                .catch((error)=>{
+                    console.log(error); 
+                })
+            }  
+        }
+    }
     
     
   return (
@@ -203,8 +229,13 @@ const Cart = () => {
                 <h3>My Cart ({cartData.length})</h3>
                 <select name="" id="" >
                     <option value="" disabled> Location</option>
-                    <option value=""><PinDropIcon/>BridgeLabz Solutions LLP, No...</option>
-                    <option value="">use current location1</option>
+                    {
+                        userAddress?.address?.map((add,index)=>{
+                            return <option value={add.fullAddress}>{add.fullAddress.slice(0, 24)+'...'}</option>
+                        })
+                    }
+                    {/* <option value=""><PinDropIcon/>BridgeLabz Solutions LLP, No...</option>
+                    <option value="">use current location1</option> */}
                 </select>  
             </div>  
             <div className='cart-details-cnt'>
@@ -245,56 +276,86 @@ const Cart = () => {
                     </div>
                     :
                     <div className='address-true-cnt'>
-                        <div>
+                        <div className='address-customer-cnt'>
                             <h3>Customer Details</h3>
+                            <button onClick={()=>setAddNewAddress(!addNewAddress)}>Add New Address</button>
                         </div>
                         <div className='address-details'>
                             <div className="address-name-cnt">
                                 <div className='address-fname-cnt'>
                                     <div>Full Name</div>
-                                    <div className='address-input-div-cnt'>Debnath Mondal</div>
+                                    <div className='address-input-div-cnt'>{userAddress.fullName}</div>
                                 </div>
                                 <div className="mobile">
                                     <div>Mobile Number</div>
-                                    <div className='address-input-div-cnt'>6206845987</div>
+                                    <div className='address-input-div-cnt'>{userAddress.phone}</div>
                                 </div>
                             </div>
-                            <div className='address-fulladdress-cnt'>
-                                <div>Address</div>
-                                <div className='address-fulladdress-input-cnt'>
-                                  BridgeLabz Solutions LLP, No. 42, 14th Main, 15th Cross, Sector 4, Opp to BDA complex, near Kumarakom restaurant, HSR Layout, Bangalore
+                            {addNewAddress &&
+                             <div>
+                                <div className='address-fulladdress-cnt'>
+                                    <div>Address</div>
+                                    <textarea type='text' className='address-fulladdress-input-cnt' onChange={(e) => setAddressNew(e.target.value)}/>
                                 </div>
-                            </div>
-                            <div className="address-name-cnt">
-                                <div className='address-fname-cnt'>
-                                    <div>City/Town</div>
-                                    <div className='address-input-div-cnt'>Bangaluru</div>
-                                </div>
-                                <div className="mobile">
-                                    <div>state</div>
-                                    <div className='address-input-div-cnt'>karnataka</div>
-                                </div>
-                            </div>
-                            <div className='address-type-cnt'>
-                                <div>Type</div>
-                                <div className='address-radio-cnt'>
-                                    <div className='address-radio-btn'>
-                                        <input type="radio" name="type" id="" />
-                                        <div>Home</div>
+                                <div className="address-name-cnt">
+                                    <div className='address-fname-cnt'>
+                                        <div>City/Town</div>
+                                        <input type="text" className='address-input-div-cnt' onChange={(e) => SetCity(e.target.value)}/>
                                     </div>
-                                    <div className='address-radio-btn'>
-                                        <input type="radio" name="type" id="" />
-                                        <div>Work</div>
-                                    </div>
-                                    <div className='address-radio-btn'>
-                                        <input type="radio" name="type" id="" />
-                                        <div>Other</div>
+                                    <div className="mobile">
+                                        <div>state</div>
+                                        <input type="text" className='address-input-div-cnt' onChange={(e) => setState(e.target.value)}/>
                                     </div>
                                 </div>
+                                <div className='address-type-cnt'>
+                                    <div>Type</div>
+                                    <div className='address-radio-cnt'>
+                                        <div className='address-radio-btn'>
+                                            <input type="radio" name="type" value={'Home'} onChange={(e) => setAddresstype(e.target.value)} />
+                                            <div>Home</div>
+                                        </div>
+                                        <div className='address-radio-btn'>
+                                            <input type="radio" name="type" value={'Office'} onChange={(e) => setAddresstype(e.target.value)}/>
+                                            <div>Work</div>
+                                        </div>
+                                        <div className='address-radio-btn'>
+                                            <input type="radio" name="type" value={'Other'} onChange={(e) => setAddresstype(e.target.value)}/>
+                                            <div>Other</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div className='cart-save-btn'>
+                                   <button onClick={handleAddressApi}>SAVE</button>
+                                 </div>
+                                 
                             </div>
+                          }
+
+                            {
+                                userAddress.address.length !==0 && 
+                                <div className='address-display-cnt'>
+                                    {
+                                        userAddress.address.map((newAddress,index)=>{
+                                         return   <div className='address-item-dispaly-cnt'>
+                                                <div style={{display:'flex' ,gap:"15px",alignItems:'center'}}>
+                                                    <input type="radio" name="address" id="" value={newAddress.addressType} style={{cursor:"pointer"}} onChange={(e)=>setChecked(e.target.value)}/> 
+                                                    <div style={{fontWeight:'800',fontSize:"15px"}}>{index+1}. {newAddress.addressType}</div>
+                                                </div>
+                                                <div style={{paddingLeft:"35px"}}>
+                                                    <div style={{width: '48px',height: '16px',fontWeight:'500'}}>Address</div>
+                                                    <p>{newAddress.fullAddress}</p>
+                                                </div>
+                                            </div>
+                                        })
+                                    }  
+                                </div> 
+                            }
+
+                         
+                            
                         </div>
                         <div className='cart-details-div'>
-                          {showContinueBtn && <button className='cart-details-btn' onClick={handleAddress}>CONTINUE</button>}
+                          {showContinueBtn && checked && <button className='cart-details-btn' onClick={handleAddress}>CONTINUE</button>}
                         </div>
                     </div>
                 }
@@ -328,28 +389,30 @@ const Cart = () => {
                     }
 
                     {/* ---------- */}
-                    <div class="price-details">
-                        <h2>CART PRICE DETAILS</h2>
-                        <div class="row">
-                            <span>Price ({cartData.length} items)</span>
-                            <span class="price">₹{cartPrice()}</span>
+                    {/* <div className="cart-price-cnt"> */}
+                        <div class="price-details">
+                            <h2>CART PRICE DETAILS</h2>
+                            <div class="row">
+                                <span>Price ({cartData.length} items)</span>
+                                <span class="price">₹{cartPrice()}</span>
+                            </div>
+                            
+                            <div class="row">
+                                <span>Delivery Charges</span>
+                                <span class="delivery">₹40</span>
+                                <span class="discount">Free</span>
+                            </div>
+                            <div class="row total">
+                                <span>Total Amount</span>
+                                <span class="price">₹{cartPrice()}</span>
+                            </div>
+                            <div class="savings">
+                                You will save ₹40 on this order
+                            </div>
                         </div>
-                        
-                        <div class="row">
-                            <span>Delivery Charges</span>
-                            <span class="delivery">₹40</span>
-                            <span class="discount">Free</span>
-                        </div>
-                        <div class="row total">
-                            <span>Total Amount</span>
-                            <span class="price">₹{cartPrice()}</span>
-                        </div>
-                        <div class="savings">
-                            You will save ₹40 on this order
-                        </div>
-                    </div>
+                    {/* </div> */}
                     {/* ----------- */}
-
+                     
                     
                     <div className='cart-details-div'>
                         <button className='cart-details-btn' onClick={handleCheckout}>CHECKOUT</button>
